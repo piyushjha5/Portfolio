@@ -6,15 +6,25 @@ const ProjectsSection: React.FC = () => {
   return (
     <section
       id="projects"
-      className="py-20 bg-white dark:bg-gray-900 transition-colors duration-300"
+      className="py-20 bg-white dark:bg-stone-950 transition-colors duration-300 relative overflow-hidden"
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Aurora background accents */}
+      <div
+        className="absolute -top-16 left-1/4 w-72 h-72 rounded-full bg-cyan-500/5 dark:bg-cyan-500/10 blur-3xl pointer-events-none"
+        style={{ animation: 'glow-drift-alt 11s ease-in-out infinite' }}
+      />
+      <div
+        className="absolute bottom-10 -right-16 w-80 h-80 rounded-full bg-emerald-500/5 dark:bg-emerald-500/10 blur-3xl pointer-events-none"
+        style={{ animation: 'glow-drift 14s ease-in-out infinite' }}
+      />
+
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="text-4xl font-bold text-stone-900 dark:text-white mb-4">
             Featured Projects
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-stone-600 dark:text-stone-300 max-w-3xl mx-auto">
             Here are some of my recent projects that showcase my skills and
             passion for development.
           </p>
@@ -25,7 +35,7 @@ const ProjectsSection: React.FC = () => {
           {projects.map((project) => (
             <div
               key={project.id}
-              className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-200 dark:border-gray-700 group"
+              className="bg-white dark:bg-stone-900 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-stone-200 dark:border-stone-800 group aurora-card aurora-border"
             >
               {/* Project Image */}
               <div className="relative overflow-hidden">
@@ -45,10 +55,10 @@ const ProjectsSection: React.FC = () => {
 
               {/* Project Content */}
               <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+                <h3 className="text-xl font-semibold text-stone-900 dark:text-white mb-3 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors duration-300">
                   {project.title}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
+                <p className="text-stone-600 dark:text-stone-300 mb-4 leading-relaxed">
                   {project.description}
                 </p>
 
@@ -57,7 +67,7 @@ const ProjectsSection: React.FC = () => {
                   {project.technologies.map((tech, index) => (
                     <span
                       key={index}
-                      className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1 rounded-full text-sm hover:bg-blue-100 dark:hover:bg-blue-900/30 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200"
+                      className="bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 px-3 py-1 rounded-full text-sm hover:bg-cyan-100 dark:hover:bg-cyan-900/30 hover:text-cyan-700 dark:hover:text-cyan-300 transition-colors duration-200"
                     >
                       {tech}
                     </span>
@@ -70,7 +80,7 @@ const ProjectsSection: React.FC = () => {
                     <a
                       href={project.liveUrl}
                       target="_blank"
-                      className="flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-200 group/link"
+                      className="flex items-center text-cyan-600 dark:text-cyan-400 hover:text-cyan-800 dark:hover:text-cyan-300 transition-colors duration-200 group/link"
                     >
                       <ExternalLink
                         size={16}
@@ -82,7 +92,7 @@ const ProjectsSection: React.FC = () => {
                   <a
                     href={project.githubUrl}
                     target="_blank"
-                    className="flex items-center text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-300 transition-colors duration-200 group/link"
+                    className="flex items-center text-stone-600 dark:text-stone-400 hover:text-stone-800 dark:hover:text-stone-300 transition-colors duration-200 group/link"
                   >
                     <Github
                       size={16}
@@ -101,7 +111,7 @@ const ProjectsSection: React.FC = () => {
           <a
             href="https://github.com/piyushjha5?tab=repositories"
             target="_blank"
-            className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium text-lg group transition-all duration-300"
+            className="inline-flex items-center text-cyan-600 dark:text-cyan-400 hover:text-cyan-800 dark:hover:text-cyan-300 font-medium text-lg group transition-all duration-300"
           >
             <Github
               size={20}

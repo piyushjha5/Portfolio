@@ -14,7 +14,7 @@ const StickySocialLinks: React.FC = () => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={link.platform}
-            className="bg-white dark:bg-gray-700 p-3 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-800 hover:text-white dark:hover:bg-black transition-all duration-300 transform hover:scale-110 shadow-md hover:shadow-lg"
+            className="bg-white dark:bg-stone-800 p-3 rounded-full text-stone-600 dark:text-stone-300 hover:bg-stone-800 hover:text-white dark:hover:bg-stone-950 transition-all duration-300 transform hover:scale-110 shadow-md hover:shadow-lg"
           >
             <Icon size={20} />
           </a>

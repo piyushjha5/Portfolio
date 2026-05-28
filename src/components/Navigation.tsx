@@ -44,12 +44,12 @@ const Navigation: React.FC = () => {
   const navItems = ["home", "about", "skills", "projects", "contact"];
 
   return (
-    <nav className="fixed top-0 w-full bg-white/95 dark:bg-gray-900/95 backdrop-blur-md z-50 border-b border-gray-200 dark:border-gray-700 transition-colors duration-300">
+    <nav className="fixed top-0 w-full bg-white/95 dark:bg-stone-950/95 backdrop-blur-md z-50 border-b border-stone-200 dark:border-stone-800 transition-colors duration-300">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            <div className="text-2xl font-bold aurora-text">
               {personalInfo.name}
             </div>
           </div>
@@ -60,23 +60,23 @@ const Navigation: React.FC = () => {
               <button
                 key={item}
                 onClick={() => scrollToSection(item)}
-                className={`px-3 py-2 text-sm font-medium transition-all duration-200 capitalize relative ${
+                className={`px-3 py-2 text-sm font-medium transition-all duration-300 capitalize relative group ${
                   activeSection === item
-                    ? "text-blue-600 dark:text-blue-400"
-                    : "text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+                    ? "text-cyan-500 dark:text-cyan-400"
+                    : "text-stone-700 dark:text-stone-300 hover:text-cyan-500 dark:hover:text-cyan-400"
                 }`}
               >
                 {item}
-                {activeSection === item && (
-                  <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full transform scale-x-100 transition-transform duration-300" />
-                )}
+                <span
+                  className={`nav-underline ${activeSection === item ? "active" : ""}`}
+                />
               </button>
             ))}
 
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 transform hover:scale-110"
+              className="p-2 rounded-lg bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 hover:bg-stone-200 dark:hover:bg-stone-700 transition-all duration-200 transform hover:scale-110"
             >
               {isDark ? <Sun size={20} /> : <Moon size={20} />}
             </button>
@@ -86,13 +86,13 @@ const Navigation: React.FC = () => {
           <div className="md:hidden flex items-center space-x-4">
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200"
+              className="p-2 rounded-lg bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 hover:bg-stone-200 dark:hover:bg-stone-700 transition-all duration-200"
             >
               {isDark ? <Sun size={20} /> : <Moon size={20} />}
             </button>
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
+              className="text-stone-700 dark:text-stone-300 hover:text-cyan-500 dark:hover:text-cyan-400 transition-colors duration-200"
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -102,7 +102,7 @@ const Navigation: React.FC = () => {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 animate-in slide-in-from-top duration-300">
+        <div className="md:hidden bg-white dark:bg-stone-950 border-t border-stone-200 dark:border-stone-800 animate-in slide-in-from-top duration-300">
           <div className="px-2 pt-2 pb-3 space-y-1">
             {navItems.map((item) => (
               <button
@@ -110,8 +110,8 @@ const Navigation: React.FC = () => {
                 onClick={() => scrollToSection(item)}
                 className={`block px-3 py-2 text-base font-medium capitalize w-full text-left transition-colors duration-200 ${
                   activeSection === item
-                    ? "text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20"
-                    : "text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-800"
+                    ? "text-cyan-500 dark:text-cyan-400 bg-cyan-50 dark:bg-cyan-900/20"
+                    : "text-stone-700 dark:text-stone-300 hover:text-cyan-500 dark:hover:text-cyan-400 hover:bg-stone-50 dark:hover:bg-stone-800"
                 }`}
               >
                 {item}

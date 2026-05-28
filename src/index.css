@@ -3,6 +3,194 @@
 /* Configure dark mode using custom variant */
 @variant dark (.dark &);
 
+/* ===== Aurora Borealis Theme ===== */
+
+/* Animated aurora gradient for text */
+@keyframes aurora-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.aurora-text {
+  background: linear-gradient(135deg, #22c55e, #06b6d4, #a855f7, #22c55e);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: aurora-shift 6s ease infinite;
+}
+
+/* Aurora gradient button / element background */
+.aurora-bg {
+  background: linear-gradient(135deg, #22c55e, #06b6d4, #a855f7);
+  background-size: 200% 200%;
+  animation: aurora-shift 4s ease infinite;
+}
+
+/* Aurora glow on hover for cards */
+@keyframes aurora-glow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(34, 197, 94, 0.12), 0 0 30px rgba(6, 182, 212, 0.06);
+  }
+  33% {
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.12), 0 0 30px rgba(168, 85, 247, 0.06);
+  }
+  66% {
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.12), 0 0 30px rgba(34, 197, 94, 0.06);
+  }
+}
+
+.aurora-card {
+  transition: all 0.3s ease;
+}
+
+.dark .aurora-card:hover {
+  animation: aurora-glow 3s ease infinite;
+}
+
+/* Animated aurora border effect */
+.aurora-border {
+  position: relative;
+  overflow: visible;
+}
+
+.aurora-border::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, #22c55e, #06b6d4, #a855f7, #22c55e);
+  background-size: 300% 300%;
+  animation: aurora-shift 6s ease infinite;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.aurora-border:hover::before {
+  opacity: 1;
+}
+
+/* Floating aurora mesh blobs for hero section */
+@keyframes float-blob-1 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(40px, -60px) scale(1.1);
+  }
+  66% {
+    transform: translate(-30px, 30px) scale(0.95);
+  }
+}
+
+@keyframes float-blob-2 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(-50px, 40px) scale(1.05);
+  }
+  66% {
+    transform: translate(30px, -40px) scale(0.9);
+  }
+}
+
+@keyframes float-blob-3 {
+  0%, 100% {
+    transform: translate(0, 0) scale(0.95);
+  }
+  33% {
+    transform: translate(20px, 50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-40px, -20px) scale(1);
+  }
+}
+
+.aurora-mesh {
+  position: relative;
+  overflow: hidden;
+}
+
+.aurora-mesh::before,
+.aurora-mesh::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.aurora-mesh::before {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, #22c55e, transparent 70%);
+  top: 10%;
+  left: 10%;
+  animation: float-blob-1 12s ease-in-out infinite;
+}
+
+.aurora-mesh::after {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, #a855f7, transparent 70%);
+  bottom: 10%;
+  right: 15%;
+  animation: float-blob-2 15s ease-in-out infinite;
+}
+
+/* Third blob via a wrapper pseudo (applied to child) */
+.aurora-blob-cyan {
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, #06b6d4, transparent 70%);
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.12;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: float-blob-3 18s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Dark mode enhances the blobs */
+.dark .aurora-mesh::before {
+  opacity: 0.2;
+}
+
+.dark .aurora-mesh::after {
+  opacity: 0.18;
+}
+
+.dark .aurora-blob-cyan {
+  opacity: 0.15;
+}
+
+/* Nav underline aurora animation */
+.aurora-underline {
+  background: linear-gradient(90deg, #22c55e, #06b6d4, #a855f7);
+  background-size: 200% 100%;
+  animation: aurora-shift 3s ease infinite;
+}
+
+/* ===== Popup Animations ===== */
+
 /* Smooth popup animation without flickering */
 @keyframes popup-enter {
   0% {
@@ -36,4 +224,175 @@
 
 .progress-error {
   animation: shrinkProgress 8s linear forwards;
+}
+
+/* Subtle aurora pulse for the profile image ring */
+@keyframes aurora-ring-pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.3), 0 0 40px rgba(6, 182, 212, 0.15);
+  }
+  33% {
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.3), 0 0 40px rgba(168, 85, 247, 0.15);
+  }
+  66% {
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.3), 0 0 40px rgba(34, 197, 94, 0.15);
+  }
+}
+
+.aurora-ring {
+  animation: aurora-ring-pulse 4s ease-in-out infinite;
+}
+
+/* Skill logo subtle float */
+@keyframes subtle-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.hover\:aurora-float:hover {
+  animation: subtle-float 2s ease-in-out infinite;
+}
+
+/* ===== Section Background Glow Animations ===== */
+
+/* Slow drifting glow orb */
+@keyframes glow-drift {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -40px) scale(1.15);
+  }
+  66% {
+    transform: translate(-20px, 25px) scale(0.9);
+  }
+}
+
+@keyframes glow-drift-alt {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(-35px, 30px) scale(1.1);
+  }
+  66% {
+    transform: translate(25px, -35px) scale(0.95);
+  }
+}
+
+/* Soft breathing pulse */
+@keyframes glow-breathe {
+  0%, 100% {
+    opacity: 0.06;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.14;
+    transform: scale(1.08);
+  }
+}
+
+.dark .glow-breathe {
+  animation: glow-breathe 6s ease-in-out infinite;
+}
+
+/* Twinkling star particles */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.3); }
+}
+
+.aurora-stars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.aurora-stars::before,
+.aurora-stars::after {
+  content: '';
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #06b6d4;
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+.aurora-stars::before {
+  top: 15%;
+  left: 20%;
+  box-shadow:
+    80px 40px 0 0 rgba(34, 197, 94, 0.5),
+    200px 80px 0 0 rgba(6, 182, 212, 0.4),
+    320px 20px 0 0 rgba(168, 85, 247, 0.5),
+    450px 120px 0 0 rgba(34, 197, 94, 0.3),
+    580px 60px 0 0 rgba(6, 182, 212, 0.6),
+    700px 150px 0 0 rgba(168, 85, 247, 0.4),
+    150px 180px 0 0 rgba(34, 197, 94, 0.4),
+    350px 200px 0 0 rgba(6, 182, 212, 0.3),
+    500px 250px 0 0 rgba(168, 85, 247, 0.5),
+    650px 280px 0 0 rgba(34, 197, 94, 0.3);
+  animation-delay: 0s;
+}
+
+.aurora-stars::after {
+  top: 45%;
+  left: 10%;
+  box-shadow:
+    60px 30px 0 0 rgba(168, 85, 247, 0.4),
+    180px 90px 0 0 rgba(34, 197, 94, 0.5),
+    300px 10px 0 0 rgba(6, 182, 212, 0.3),
+    420px 70px 0 0 rgba(168, 85, 247, 0.6),
+    540px 130px 0 0 rgba(34, 197, 94, 0.4),
+    100px 160px 0 0 rgba(6, 182, 212, 0.5),
+    260px 220px 0 0 rgba(168, 85, 247, 0.3),
+    400px 180px 0 0 rgba(34, 197, 94, 0.5),
+    620px 240px 0 0 rgba(6, 182, 212, 0.4),
+    750px 50px 0 0 rgba(168, 85, 247, 0.3);
+  animation-delay: 1.5s;
+  animation-duration: 4s;
+}
+
+/* Light mode: subtle stars */
+.aurora-stars::before,
+.aurora-stars::after {
+  opacity: 0.3;
+}
+
+.dark .aurora-stars::before,
+.dark .aurora-stars::after {
+  opacity: 1;
+}
+
+/* ===== Nav Underline Expand Animation ===== */
+
+/* Expand from center on hover, stay expanded when active */
+.nav-underline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #22c55e, #06b6d4, #a855f7);
+  background-size: 200% 100%;
+  animation: aurora-shift 3s ease infinite;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-underline.active {
+  transform: scaleX(1);
+}
+
+.group:hover .nav-underline {
+  transform: scaleX(1);
 }
